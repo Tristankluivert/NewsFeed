@@ -2,6 +2,7 @@ package com.ostap_kozak.newsfeed;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 
 public class FeedActivity extends AppCompatActivity {
 
@@ -9,5 +10,11 @@ public class FeedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
+
+        RecyclerView newsRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_news);
+
+
+
+
     }
 }
