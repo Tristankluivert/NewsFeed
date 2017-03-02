@@ -22,7 +22,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     // Store context for easy access.
     private Context mContext;
 
-    public NewsAdapter(List<News> newsList, Context context) {
+    public NewsAdapter(Context context, List<News> newsList) {
         mNewsList = newsList;
         mContext = context;
     }
