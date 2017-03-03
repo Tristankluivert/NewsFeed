@@ -50,7 +50,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         TextView news_title = holder.newsTitle;
         TextView news_description = holder.newsDescription;
 
-        news_image.setImageResource(news.getImage());
+        //news_image.setImageResource(news.getImage());
         news_title.setText(news.getTitle());
         news_description.setText(news.getDescrption());
     }

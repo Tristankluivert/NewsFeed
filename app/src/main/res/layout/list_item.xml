@@ -41,7 +41,7 @@
                     android:textStyle="bold"
                     android:id="@+id/news_title"
                     android:ellipsize="end"
-                    android:maxLines="1"
+                    android:maxLines="2"
                     tools:text="This is probably the Samsung Galaxy S8" />
 
                 <TextView

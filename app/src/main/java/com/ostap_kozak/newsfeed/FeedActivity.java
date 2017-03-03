@@ -8,29 +8,50 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class FeedActivity extends AppCompatActivity {
+    private List<News> news = new ArrayList<>();
+
+    private final String URL = "https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=5fdf8e4518634a28be9c18dde43e5c59";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
 
-        final List<News> news = new ArrayList<>();
-        news.add(new News("Fake News", "Decorators can also be used for adding consistent spacing around " +
-                "items displayed in a grid layout or staggered grid. Copy over this SpacesItemDecoration.java" +
-                " decorator into your project and apply to a RecyclerView using the addItemDecoration method." +
-                " Refer to this staggered grid tutorial for a more detailed outline.", "3", R.mipmap.ic_launcher));
-        news.add(new News("Lels", "Description", "6", R.mipmap.ic_launcher));
-        news.add(new News("Fake News", "Description", "3", R.mipmap.ic_launcher));
-        news.add(new News("Lels", "Description", "6", R.mipmap.ic_launcher));
-        news.add(new News("Fake News", "Description", "3", R.mipmap.ic_launcher));
-        news.add(new News("Lels", "Description", "6", R.mipmap.ic_launcher));
-        news.add(new News("Fake News", "Description", "3", R.mipmap.ic_launcher));
-        news.add(new News("Lels", "Description", "6", R.mipmap.ic_launcher));
 
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        news = Utils.extractNewsFromJson(response);
+                        createAdapter();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(FeedActivity.this, "Connection failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        requestQueue.add(stringRequest);
+
+
+    }
+
+
+    public void createAdapter() {
         RecyclerView newsRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_news);
 
         NewsAdapter newsAdapter = new NewsAdapter(this, news);
@@ -49,6 +70,6 @@ public class FeedActivity extends AppCompatActivity {
                     }
                 }
         );
-
     }
+
 }
