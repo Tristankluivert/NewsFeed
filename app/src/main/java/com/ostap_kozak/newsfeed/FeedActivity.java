@@ -1,5 +1,7 @@
 package com.ostap_kozak.newsfeed;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -46,8 +48,6 @@ public class FeedActivity extends AppCompatActivity {
         });
 
         requestQueue.add(stringRequest);
-
-
     }
 
 
@@ -65,11 +65,14 @@ public class FeedActivity extends AppCompatActivity {
                 new ItemClickSupport.OnItemClickListener() {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                        Toast.makeText(FeedActivity.this, news.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(news.get(position).getUrl()));
+                        startActivity(intent);
 
                     }
                 }
         );
     }
+
+
 
 }

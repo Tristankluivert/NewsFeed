@@ -10,10 +10,10 @@ public class News {
 
     private String mTitle;
     private String mDescription;
-    private URL mUrl;
-    private URL mImageUrl;
+    private String mUrl;
+    private String mImageUrl;
 
-    public News(String title, String description, URL url, URL imageUrl) {
+    public News(String title, String description, String url, String imageUrl) {
         this.mTitle = title;
         this.mDescription = description;
         this.mUrl = url;
@@ -22,8 +22,8 @@ public class News {
 
     public String getTitle() { return mTitle;}
     public String getDescrption() { return mDescription;}
-    public URL getUrl() { return mUrl;}
-    public URL getImage() { return mImageUrl;}
+    public String getUrl() { return mUrl;}
+    public String getImageUrl() { return mImageUrl;}
 
 
 

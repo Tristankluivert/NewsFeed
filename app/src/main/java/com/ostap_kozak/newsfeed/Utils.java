@@ -32,24 +32,12 @@ public class Utils {
                 String url = newsArticle.getString("url");
                 String urlImage = newsArticle.getString("urlToImage");
 
-                news.add(new News(title, description, createUrl(url), createUrl(urlImage)));
+                news.add(new News(title, description, url, urlImage));
             }
         } catch (JSONException exception) {
             exception.printStackTrace();
         }
 
         return news;
-    }
-
-
-    /** Returns a URL object from the given string URL **/
-    private static URL createUrl(String stringUrl) {
-        URL url = null;
-        try {
-            url = new URL(stringUrl);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        return url;
     }
 }

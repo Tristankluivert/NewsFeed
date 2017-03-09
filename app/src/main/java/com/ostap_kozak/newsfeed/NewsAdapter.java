@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 /**
@@ -34,7 +36,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.list_item, parent, false);
+        View contactView = inflater.inflate(R.layout.card_view_list_item, parent, false);
 
         // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(contactView);
@@ -50,7 +52,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         TextView news_title = holder.newsTitle;
         TextView news_description = holder.newsDescription;
 
-        //news_image.setImageResource(news.getImage());
+        Glide.with(getContext()).load(news.getImageUrl()).into(news_image);
         news_title.setText(news.getTitle());
         news_description.setText(news.getDescrption());
     }
