@@ -23,7 +23,7 @@ import java.util.List;
 public class FeedActivity extends AppCompatActivity {
     private List<News> news = new ArrayList<>();
 
-    private final String URL = "https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=5fdf8e4518634a28be9c18dde43e5c59";
+    private final String URL = "https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=5fdf8e4518634a28be9c18dde43e5c59";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

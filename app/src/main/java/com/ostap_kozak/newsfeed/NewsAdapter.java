@@ -1,6 +1,7 @@
 package com.ostap_kozak.newsfeed;
 
 import android.content.Context;
+import android.support.v4.widget.TextViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,10 +55,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         ImageView news_image = holder.newsImage;
         TextView news_title = holder.newsTitle;
         TextView news_description = holder.newsDescription;
+        TextView news_time = holder.newsTime;
 
         Glide.with(getContext()).load(news.getImageUrl()).into(news_image);
         news_title.setText(news.getTitle());
-        news_description.setText(news.getDescrption());
+        news_description.setText(news.getDescription());
+
+        news_time.setText(Utils.convertNewsTimePublication(news.getTime()));
     }
 
     @Override
@@ -66,7 +73,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView newsImage;
-        TextView newsTitle, newsDescription;
+        TextView newsTitle, newsDescription, newsTime;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -74,6 +81,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             newsImage = (ImageView) itemView.findViewById(R.id.news_image);
             newsTitle = (TextView) itemView.findViewById(R.id.news_title);
             newsDescription = (TextView) itemView.findViewById(R.id.news_description);
+            newsTime = (TextView) itemView.findViewById(R.id.news_time);
 
         }
     }
