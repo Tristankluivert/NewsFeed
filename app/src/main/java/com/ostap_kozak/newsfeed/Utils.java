@@ -62,7 +62,7 @@ public class Utils {
     }
 
     public static String convertNewsTimePublication(String newsTime) {
-        Date systemDate = new Date("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        Date systemDate = new Date();
         Date newsDate = stringToDate(newsTime);
         Date date = new Date(systemDate.getTime() - newsDate.getTime());
 
