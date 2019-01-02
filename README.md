@@ -8,7 +8,7 @@ Powered by: https://newsapi.org/
 Sreenshot
 ---------
 <p align="center">
-  <img src="https://github.com/Ostap95/NewsFeed/blob/master/Screenshot/main_layout.jpg" width="350"/>
+  <img src="https://github.com/Tristankluivert/NewsFeed/blob/klui/Screenshot/Screenshot_20181231-090751.png"/>
 </p>
 
 Pre-requisites
